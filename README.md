@@ -1,15 +1,13 @@
-# Simple Vagrantfile for mongodb community edition 3.6
-
-Created and tested on macOS High Sierra v10.13.5 (as of 10 July, 2018)
+# Simple Vagrantfile for mongodb community edition 4.0
 
 ### Required software
 
-- [Virtualbox](https://www.virtualbox.org/) (v5.2.12r122591 tested)
-- [Vagrant](https://www.vagrantup.com/) (v2.1.2 tested)
+- [Virtualbox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
 
 ### Files in 'scripts' dir:
 - add_mongo_admin.js
-- install_mongodb-3.6.sh
+- install_mongodb-4.0.sh
 - mongod.conf
 - update.sh
 
