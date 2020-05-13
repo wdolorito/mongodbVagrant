@@ -6,11 +6,11 @@
 - [Vagrant](https://www.vagrantup.com/)
 
 #### Tested on:
-##### Windows 10 1909 (OS Build 18363.778)
+##### Windows 10 1909 (OS Build 18363.778) (cross platforming with MSYS2)
 - VirtualBox v6.1.6r137129 **_(installed from website)_**
 - Vagrant v2.2.9 **_(installed from website)_**
 
-##### KDE neon 5.18 User Edition
+##### KDE neon 5.18 User Edition (second *(read as primary)* OS on mac mini)
 - KDE Plasma v5.18.5
 - KDE Frameworks v5.70.0
 - Qt v5.14.2
@@ -21,6 +21,11 @@
 ##### OS X El Capitan (Version 10.11.6) `someone give me a mac mini server!  >= mid-2011+ pls :-D`
 - VirtualBox v6.1.6r137129 **_(installed from website)_**
 - Vagrant v2.2.9 **_(installed from website)_**
+
+##### elementary OS 5.1.4 Hera (personal daily driver)
+- Kernel v4.15.0-99-generic
+- VirtualBox v5.2.34_Ubuntur133883 **_(installed using apt)_**
+- Vagrant v2.0.2 **_(installed using apt)_**
 
 ### Files in 'scripts' dir:
 - add_mongo_admin.js
