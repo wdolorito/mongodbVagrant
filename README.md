@@ -7,8 +7,16 @@
 
 #### Tested on:
 ##### Windows 10 1909 (OS Build 18363.778)
-- VirtualBox v6.1.6r137129
-- Vagrant v2.2.9
+- VirtualBox v6.1.6r137129 **_(installed from website)_**
+- Vagrant v2.2.9 **_(installed from website)_**
+
+##### KDE neon 5.18 User Edition
+- KDE Plasma v5.18.5
+- KDE Frameworks v5.70.0
+- Qt v5.14.2
+- Kernel v5.3.0-51-generic
+- VirtualBox v5.2.34_Ubuntur133883 **_(installed using apt)_**
+- Vagrant v2.0.2 **_(installed using apt)_**
 
 ### Files in 'scripts' dir:
 - add_mongo_admin.js
