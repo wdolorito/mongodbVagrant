@@ -1,4 +1,4 @@
-# Simple Vagrantfile for mongodb community edition 4.2 and nodejs 12
+# Simple Vagrantfile for MongoDB community edition 4.2 and nodejs 12
 
 ### Required software
 
@@ -30,21 +30,22 @@
 ### How to customize
 The admin user and password can be changed in add_mongo_admin.js.  Inside the main Vagrantfile, the private ip address can be changed as well as the hostname of the VM and the name that appears in VirtualBox Manager. `Important: if the private ip is changed, be sure to add the requisite change to mongod.conf line bindIp.`
 
-### Bring up the MongoDB server
-The MongoDB server is bound by default to localhost and the static IP 192.168.10.200.
+### Bring up everything using VirtualBox
 
 ```sh
-cd server
+cd virtualbox
 vagrant up
 ```
 
+The MongoDB server is bound by default to localhost (itself) and the static IP 192.168.10.200.  The default static IP of the nodejs box is 192.168.10.230.
+
 ### How to use nodejs box
-The mongo shell will have been installed after bringing up the nodejs box.  The default static IP is 192.168.10.230.
+The mongo shell will have been installed after bringing up the nodejs box.  
 
 ```sh
-cd nodejs
-vagrant up
-vagrant ssh
+cd virtualbox
+vagrant up # if not running already
+vagrant ssh nodejs
 ```
 
 Connect to running mongodb server and authenticate (assuming default values)
@@ -71,21 +72,21 @@ Finally, you can either copy the ssh keys generated during setup to your default
 # Vagrant nodejs box
 Host vagrant-nodejs
   HostName 192.168.10.230
-  IdentitiesOnly yes
   user vagrant
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/vagrant-nodejs_key
 
 # Vagrant mongodb box
 Host vagrant-mongodb
   HostName 192.168.10.200
-  IdentitiesOnly yes
   user vagrant
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/vagrant-mongodb_key
 ```
 
-The generated private keys are located in their respective directories:  `{nodejs,server}/.vagrant/machines/default/virtualbox/private_key`
+The generated private keys are located in their respective directories:  `.../.vagrant/machines/{mongodb,nodejs}/virtualbox/private_key`
 
-Running `vagrant ssh-config` inside the `server` or `nodejs` directories will give you the exact location.  The value used is what follows after `IdentityFile`.  Inside an [MSYS2](https://www.msys2.org/) installation, an example full path to the setup generated key could appear as follows: `/c/testing/mongodbVagrant/nodejs/.vagrant/machines/default/virtualbox/private_key` or `/c/testing/mongodbVagrant/server/.vagrant/machines/default/virtualbox/private_key`.  For the above example, the keys were copied and renamed to the private `.ssh` directory.
+Running `vagrant ssh-config` inside the `virtualbox` directory will give you the exact location.  The value used is what follows after `IdentityFile`.  Inside an [MSYS2](https://www.msys2.org/) installation, an example full path to the setup generated key could appear as follows: `/c/testing/mongodbVagrant/virtualbox/.vagrant/machines/mongodb/virtualbox/private_key` or `/c/testing/mongodbVagrant/virtualbox/.vagrant/machines/nodejs/virtualbox/private_key`.  For the above example, the keys were copied and renamed to the private `.ssh` directory.
 
 Now, from the local machine, ssh, scp, et al will be able to authenticate and connect to the boxes:
 ```sh
@@ -94,6 +95,8 @@ ssh vagrant-mongodb # to connect to mongodb server
 ```
 
 ### At this point, check out [mongoose](https://mongoosejs.com/) and [express](https://expressjs.com/) to build something awesome.
+
+###### Don't like running everything from one file?  *No Problem!*  Separate Vagrantfile's are located in the `virtualbox` directory labeled `Vagrantfile.mongodb` and `Vagrantfile.nodejs`.
 
 #### Links to installation instructions
 ##### nodejs:
