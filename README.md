@@ -18,6 +18,10 @@
 - VirtualBox v5.2.34_Ubuntur133883 **_(installed using apt)_**
 - Vagrant v2.0.2 **_(installed using apt)_**
 
+##### OS X El Capitan (Version 10.11.6) `someone give me a mac mini server!  >= mid-2011+ pls :-D`
+- VirtualBox v6.1.6r137129 **_(installed from website)_**
+- Vagrant v2.2.9 **_(installed from website)_**
+
 ### Files in 'scripts' dir:
 - add_mongo_admin.js
 - install_mongodb-4.0.sh **_(replaced by mongodb-4.2.sh used previously for ubuntu bionic)_**
