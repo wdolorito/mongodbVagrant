@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian10"
+  config.vm.hostname = "deb-buster64-mongodb-42-hyperv"
+  config.vm.provider "hyperv" do |hv|
+    hv.memory = "2048"
+    hv.vmname = "deb-buster64-mongodb-42-hyperv"
+  end
+  config.vm.provision "shell", path: "../scripts/one_time_update.sh"
+  config.vm.provision "file", source: "../scripts/mongod.conf", destination: "/tmp/mongod.conf"
+  config.vm.provision "file", source: "../scripts/add_mongo_admin.js", destination: "/tmp/add_mongo_admin.js"
+  config.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
+  config.vm.provision "shell", path: "../scripts/install_mongodb-4.2.sh"
+end

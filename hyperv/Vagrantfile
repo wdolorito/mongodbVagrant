@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian10"
+  config.vm.provider "hyperv" do |hv|
+    hv.memory = "2048"
+  end
+
+  config.vm.define "mongodb" do |mongodb|
+    mongodb.vm.hostname = "deb-buster64-mongodb-42-hyperv"
+    mongodb.vm.provider "hyperv" do |hv|
+      hv.vmname = "deb-buster64-mongodb-42-hyperv"
+    end
+    mongodb.vm.provision "shell", path: "../scripts/one_time_update.sh"
+    mongodb.vm.provision "file", source: "../scripts/mongod.conf", destination: "/tmp/mongod.conf"
+    mongodb.vm.provision "file", source: "../scripts/add_mongo_admin.js", destination: "/tmp/add_mongo_admin.js"
+    mongodb.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
+    mongodb.vm.provision "shell", path: "../scripts/install_mongodb-4.2.sh"
+  end
+
+  config.vm.define "nodejs" do |nodejs|
+    nodejs.vm.hostname = "deb-buster64-nodejs-12-hyperv"
+    nodejs.vm.provider "hyperv" do |hv|
+      hv.vmname = "deb-buster64-nodejs-12-hyperv"
+    end
+    nodejs.vm.provision "shell", path: "../scripts/one_time_update.sh"
+    nodejs.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
+    nodejs.vm.provision "shell", path: "../scripts/install_node-12.x.sh"
+  end
+end
