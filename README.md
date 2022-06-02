@@ -113,3 +113,4 @@ ssh vagrant-mongodb # to connect to mongodb server
 
 ##### MongoDB Community Edition:
 - [https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/)
+- [https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)

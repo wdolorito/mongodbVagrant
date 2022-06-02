@@ -1,11 +1,11 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/buster64"
-  config.vm.hostname = "deb-buster64-nodejs-12-vbox"
-  config.vm.network "private_network", ip: "192.168.10.230"
+  config.vm.hostname = "debian-buster64-nodejs-12-vbox"
+  config.vm.network "private_network", ip: "192.168.10.10"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
-    vb.name = "deb-buster64-nodejs-12-vbox"
+    vb.name = "debian-buster64-nodejs-12-vbox"
   end
   config.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
-  config.vm.provision "shell", path: "../scripts/install_node-12.x.sh"
+  config.vm.provision "shell", path: "../scripts/install_node-10.x.sh"
 end

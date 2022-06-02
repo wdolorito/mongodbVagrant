@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/buster64"
+  config.vm.hostname = "debian-buster64-mongodb-42-vbox"
+  config.vm.network "private_network", ip: "192.168.10.110"
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.name = "debian-buster64-mongodb-42-vbox"
+  end
+  config.vm.provision "file", source: "../scripts/mongod.conf", destination: "/tmp/mongod.conf"
+  config.vm.provision "file", source: "../scripts/add_mongo_admin.js", destination: "/tmp/add_mongo_admin.js"
+  config.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
+  config.vm.provision "shell", path: "../scripts/install_mongodb-4.2.sh"
+end

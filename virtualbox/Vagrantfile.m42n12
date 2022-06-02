@@ -4,11 +4,11 @@ Vagrant.configure("2") do |config|
     vb.memory = "2048"
   end
 
-  config.vm.define "mongodb" do |mongodb|
-    mongodb.vm.hostname = "deb-buster64-mongodb-42-vbox"
-    mongodb.vm.network "private_network", ip: "192.168.10.200"
+  config.vm.define "mongodb42" do |mongodb|
+    mongodb.vm.hostname = "debian-buster64-mongodb-42-vbox"
+    mongodb.vm.network "private_network", ip: "192.168.10.110"
     mongodb.vm.provider "virtualbox" do |vb|
-      vb.name = "deb-buster64-mongodb-42-vbox"
+      vb.name = "debian-buster64-mongodb-42-vbox"
     end
     mongodb.vm.provision "file", source: "../scripts/mongod.conf", destination: "/tmp/mongod.conf"
     mongodb.vm.provision "file", source: "../scripts/add_mongo_admin.js", destination: "/tmp/add_mongo_admin.js"
@@ -16,11 +16,11 @@ Vagrant.configure("2") do |config|
     mongodb.vm.provision "shell", path: "../scripts/install_mongodb-4.2.sh"
   end
 
-  config.vm.define "nodejs" do |nodejs|
-    nodejs.vm.hostname = "deb-buster64-nodejs-12-vbox"
-    nodejs.vm.network "private_network", ip: "192.168.10.230"
+  config.vm.define "nodejs12" do |nodejs|
+    nodejs.vm.hostname = "debian-buster64-nodejs-12-vbox"
+    nodejs.vm.network "private_network", ip: "192.168.10.210"
     nodejs.vm.provider "virtualbox" do |vb|
-      vb.name = "deb-buster64-nodejs-12-vbox"
+      vb.name = "debian-buster64-nodejs-12-vbox"
     end
     nodejs.vm.provision "file", source: "../scripts/update.sh", destination: "/tmp/update.sh"
     nodejs.vm.provision "shell", path: "../scripts/install_node-12.x.sh"
